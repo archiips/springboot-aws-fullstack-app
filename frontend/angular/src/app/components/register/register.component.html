@@ -1,0 +1,86 @@
+<div
+  class="flex justify-content-center align-items-center"
+  style="height: 100vh"
+>
+  <div class="register-container m-3 flex flex-column justify-content-center">
+    <div class="m-auto">
+      <div class="text-center">
+        <h1>Register for an account</h1>
+      </div>
+      <p-message
+        *ngIf="errorMsg"
+        severity="error"
+        [text]="errorMsg"
+        styleClass="mb-2 w-full"
+      ></p-message>
+      <div class="field">
+        <label for="name">Name</label>
+        <input
+          [(ngModel)]="customer.name"
+          id="name"
+          pInputText
+          placeholder="Jane"
+          type="text"
+          class="w-full"
+        />
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input
+          [(ngModel)]="customer.email"
+          id="email"
+          pInputText
+          placeholder="Jane@architos.com"
+          type="email"
+          class="w-full"
+        />
+      </div>
+      <div class="field">
+        <label for="age">Age</label>
+        <input
+          [(ngModel)]="customer.age"
+          id="age"
+          pInputText
+          placeholder="34"
+          type="number"
+          class="w-full"
+        />
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input
+          [(ngModel)]="customer.password"
+          id="password"
+          pInputText
+          placeholder="Password"
+          type="password"
+          class="w-full"
+        />
+      </div>
+      <div class="field">
+        <label for="gender">Gender</label>
+        <select
+          [(ngModel)]="customer.gender"
+          class="p-dropdown w-full custom-select"
+          id="gender"
+        >
+          <option value="">Select an option</option>
+          <option value="MALE">MALE</option>
+          <option value="FEMALE">FEMALE</option>
+        </select>
+      </div>
+      <button
+        (click)="createAccount()"
+        pButton
+        label="Create an account"
+        class="w-full"
+      ></button>
+      <button
+        (click)="login()"
+        pButton
+        label="Have an account? Login now."
+        class="w-full p-button-link text-left pl-0"
+      ></button>
+    </div>
+  </div>
+</div>

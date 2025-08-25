@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    
+    <!-- Console appender with enhanced pattern including MDC -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%X{operation:-}] [%X{customer_id:-}] [%X{file_name:-}] - %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <!-- File appender for file upload operations -->
+    <appender name="FILE_UPLOAD" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/file-upload.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>logs/file-upload.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+            <maxFileSize>10MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>1GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [operation=%X{operation:-}] [customer_id=%X{customer_id:-}] [file_name=%X{file_name:-}] [file_size=%X{file_size:-}] [content_type=%X{content_type:-}] [s3_key=%X{s3_key:-}] [profile_image_id=%X{profile_image_id:-}] - %msg%n%ex</pattern>
+        </encoder>
+    </appender>
+    
+    <!-- Logger for file upload operations -->
+    <logger name="com.architos.customer.CustomerService" level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE_UPLOAD"/>
+    </logger>
+    
+    <logger name="com.architos.s3.S3Service" level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE_UPLOAD"/>
+    </logger>
+    
+    <logger name="com.architos.file.FileValidationService" level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE_UPLOAD"/>
+    </logger>
+    
+    <logger name="com.architos.metrics.FileUploadMetricsService" level="DEBUG" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE_UPLOAD"/>
+    </logger>
+    
+    <!-- Root logger -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>

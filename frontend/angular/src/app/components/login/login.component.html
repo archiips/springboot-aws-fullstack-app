@@ -1,0 +1,47 @@
+<div
+  class="flex justify-content-center align-items-center"
+  style="height: 100vh"
+>
+  <div class="login-container m-3 flex flex-column justify-content-center">
+    <div class="m-auto">
+      <div class="text-center">
+        <h1>Sign in to your account</h1>
+      </div>
+      <p-message
+        *ngIf="errorMsg"
+        severity="error"
+        [text]="errorMsg"
+        styleClass="mb-2 w-full"
+      ></p-message>
+      <div class="field">
+        <label for="email">Email</label>
+        <input
+          [(ngModel)]="authenticationRequest.username"
+          id="email"
+          pInputText
+          placeholder="Jane@architos.com"
+          type="email"
+          class="w-full"
+        />
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input
+          [(ngModel)]="authenticationRequest.password"
+          id="password"
+          pInputText
+          placeholder="Password"
+          type="password"
+          class="w-full"
+        />
+      </div>
+      <button pButton label="Login" class="w-full" (click)="login()"></button>
+      <button
+        pButton
+        label="Don't have an account? Signup now."
+        class="w-full p-button-link text-left pl-0"
+        (click)="register()"
+      ></button>
+    </div>
+  </div>
+</div>
