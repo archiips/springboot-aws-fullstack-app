@@ -2,14 +2,16 @@ name: CD - Deploy Backend
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - backend/**
+  # Disabled automatic triggers - uncomment when ready to deploy
+  # push:
+  #   branches:
+  #     - main
+  #   paths:
+  #     - backend/**
 
 jobs:
   deploy:
+    if: false # Disabled until AWS/Docker Hub is configured
     runs-on: ubuntu-latest
     services:
       postgres:
