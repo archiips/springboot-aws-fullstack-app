@@ -1,35 +1,57 @@
-# Architos - Full Stack Application
+# Customer Management App with File Upload
 
-A modern full stack application built with Spring Boot and React/Angular frontends.
+A full-stack customer management application that demonstrates modern web development practices. Users can manage customer records and upload profile pictures through a clean, responsive interface.
 
-## Overview
+## What It Does
 
-This project demonstrates a complete full stack application with robust backend services and modern frontend interfaces. Built with industry-standard technologies and best practices.
+**Customer Management**: Complete CRUD operations for customer records including personal details and contact information.
 
-## Technologies Used
+**File Upload**: Drag-and-drop interface for uploading customer profile pictures with proper validation and error handling.
 
-- ✅ Spring Boot 3
-- ✅ HTTP & API development
-- ✅ Developer tools for maximum productivity
-- ✅ Robust error handling techniques
-- ✅ Databases & PostgreSQL
-- ✅ Spring Data JPA
-- ✅ Flyway for seamless database migrations
-- ✅ JDBC for efficient database communication
-- ✅ Testing strategies for robust, reliable code
-- ✅ Docker for containerization and deployment
-- ✅ AWS for cloud-based hosting and scaling
-- ✅ DevOps best practices for agile, collaborative development
-- ✅ JavaScript and React for front-end development
-- ✅ Spring Security 6 for secure, authenticated applications
-- ✅ Login/Registration systems for user management
-- ✅ TypeScript for type-safe, scalable code
-- ✅ Angular for powerful, responsive front-end interfaces
+**Flexible Storage**: Automatically uses AWS S3 in production or local file storage during development. No AWS setup required for local testing.
+
+**Responsive Design**: Works seamlessly across desktop and mobile devices with an intuitive user interface.
+
+## Technical Stack
+
+### Backend
+- **Java 17** - Modern Java features and performance
+- **Spring Boot** - Java framework with embedded server, data access, and security
+- **PostgreSQL** - Relational database for data persistence
+- **AWS S3 SDK** - Cloud storage integration
+- **Maven** - Build and dependency management
+
+### Frontend
+- **React** - Component-based user interface library
+- **Chakra UI** - Modern, accessible component framework
+
+### Testing & Tools
+- **JUnit 5** - Unit testing framework
+- **Testcontainers** - Integration testing with containerized databases
+- **Docker** - Containerized deployment
+- **Flyway** - Database migrations
+
+## Key Features
+
+The application uses a layered architecture separating presentation, business logic, and data access concerns. The storage system implements a strategy pattern allowing seamless switching between AWS S3 and local file storage without code changes.
+
+Security is handled through Spring Security with stateless JWT authentication. The frontend follows React best practices with functional components and proper state management.
+
+The system includes comprehensive testing with both unit tests and integration tests using real database containers, ensuring reliability across different environments.
+
+## Features
+
+- RESTful API endpoints
+- JWT authentication
+- File upload with S3 integration
+- PostgreSQL database integration
+- Comprehensive error handling
+- Docker containerization
+
 
 ## Getting Started
 
 ### Prerequisites
-
 - Java 17+
 - Node.js 16+
 - Docker
@@ -38,14 +60,12 @@ This project demonstrates a complete full stack application with robust backend 
 ### Running the Application
 
 1. **Backend (Spring Boot)**
-
    ```bash
    cd backend
    ./mvnw spring-boot:run
    ```
 
 2. **Frontend (React)**
-
    ```bash
    cd frontend/react
    npm install
